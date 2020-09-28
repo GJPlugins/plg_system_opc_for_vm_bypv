@@ -2,13 +2,13 @@
 <extension version="2.5" type="plugin" group="system" method="upgrade">
 
     <name>plg_system_opc_for_vm_bypv</name>
-    <creationDate>21.11.2018</creationDate>
-    <author>byPV.org</author>
+    <creationDate>28.09.2020</creationDate>
+    <author>Gartes</author>
     <authorEmail>info@bypv.org</authorEmail>
     <authorUrl>http://www.bypv.org</authorUrl>
     <copyright>Copyright (C) 2014 byPV.org</copyright>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
     <description>PLG_SYSTEM_OPC_FOR_VM_BYPV_XML_DESCRIPTION</description>
 
     <files>
@@ -21,13 +21,12 @@
         <folder>views</folder>
         <filename plugin="opc_for_vm_bypv">opc_for_vm_bypv.php</filename>
         <filename>index.html</filename>
+        <filename>README.md</filename>
     </files>
+    <updateservers>
+        <server type="extension" priority="1" name="opc_for_vm_bypv">https://raw.githubusercontent.com/GJPlugins/plg_system_opc_for_vm_bypv/master/update.xml</server>
+    </updateservers>
 
-   <!-- <media folder="media" destination="plg_system_opc_for_vm_bypv">
-        <folder>css</folder>
-        <folder>images</folder>
-        <folder>js</folder>
-    </media>-->
 
     <config>
         <fields name="params">
