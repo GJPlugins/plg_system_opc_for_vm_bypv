@@ -1043,7 +1043,9 @@
 			
 			foreach ( $this->cart->products as $product_id => $product )
 			{
-				
+
+
+
 				
 				$PRODUCT = new stdClass();
 				
@@ -1085,8 +1087,7 @@
 				
 				
 				$PRODUCT->IS_DISCOUNTED = $PRODUCT_PRICES[ 'discountedPriceWithoutTax' ] != $PRODUCT_PRICES[ 'priceWithoutTax' ];
-// 			$PRODUCT->IS_DISCOUNTED = $PRODUCT_PRICES['discountedPriceWithoutTax'] != $PRODUCT_PRICES['basePriceVariant'];
-				
+
 				$PRODUCT->PRICE_EXCL_TAX_ORIGINAL = $this->currencyDisplay->createPriceDiv( 'basePriceVariant', '', $PRODUCT_PRICES, true, false );
 				
 				/*echo '<pre>';
@@ -1112,9 +1113,17 @@
 				{
 					$PRODUCT->TOTAL_INCL_TAX_ORIGINAL = $this->currencyDisplay->createPriceDiv( 'basePriceVariant', '', $PRODUCT_PRICES, true, false, $PRODUCT->QUANTITY );
 				}
-				
+
+
+
+
+
 				$PRODUCT->TOTAL_INCL_TAX = $this->currencyDisplay->createPriceDiv( 'salesPrice', '', $PRODUCT_PRICES, true, false, $PRODUCT->QUANTITY );
-				
+                # Стоимость товара за ед.
+				$PRODUCT->cleanSalesPrice = $PRODUCT_PRICES['salesPrice'] ;
+				$PRODUCT->virtuemart_product_id = $product->virtuemart_product_id ;
+
+
 				$DATA->PRODUCTS[ $product_id ] = $PRODUCT;
 			}
 			

@@ -49,10 +49,7 @@ class VirtueMartControllerCart_byPV extends VirtueMartControllerCart
 			$cart->setDataValidation(FALSE);
 		}
 	}
-	
-	
-	
-	
+
 	/**
 	 * @param bool $cachable
 	 * @param bool $urlparams
@@ -65,25 +62,18 @@ class VirtueMartControllerCart_byPV extends VirtueMartControllerCart
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
-		
-		if (VM_VERSION < 3)
-		{
-			return parent::display($cachable, $urlparams);
-		}#END IF
-		
 		$document = JFactory::getDocument();
 		$viewType = $document->getType();
 		$viewName = vRequest::getCmd('view', $this->default_view);
 		$viewLayout = vRequest::getCmd('layout', 'default');
-		
+
+        JPluginHelper::importPlugin('content');
+
 		# Page - CART THANKYOU
 		if ($viewLayout == 'order'){
 			return parent::display($cachable, $urlparams);
 		}
-		
-		
-		
-		
+
 		$view = $this->getView($viewName, $viewType, '', array('layout' => $viewLayout));
 		
 		
@@ -146,9 +136,6 @@ class VirtueMartControllerCart_byPV extends VirtueMartControllerCart
 		
 		if ($return_to_cart == FALSE)
 		{
-			
-			 
-		 
 			// Checkout
 			if (plgSystemOPC_for_VM_byPV::isPluginParamEnabled('allow_confirmation_page'))
 			{
@@ -582,8 +569,7 @@ class VirtueMartControllerCart_byPV extends VirtueMartControllerCart
 		
 		$view->display();
 	}#END FN
-	
-	
+
 	public function add(){
 		$cart = VirtueMartCart::getCart();
 		if ($cart->getDataValidated() === TRUE) {
@@ -591,9 +577,7 @@ class VirtueMartControllerCart_byPV extends VirtueMartControllerCart
 		}#END IF
 		parent::add();
 	}#END FN
-	
-	
-	
+
 	/**
 	 * # Order Done
 	 *

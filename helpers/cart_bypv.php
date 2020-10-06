@@ -796,8 +796,8 @@ class VirtueMartCart_byPV
 		$BT = ($BT === TRUE ? 'true' : 'false');
 		$ST = ($ST === TRUE ? 'true' : 'false');
 		
-		$document = JFactory::getDocument();
-		$document->addScriptDeclaration("VirtueMartCart_byPV.clearFieldsLocal($BT, $ST);");
+//		$document = JFactory::getDocument();
+//		$document->addScriptDeclaration("VirtueMartCart_byPV.clearFieldsLocal($BT, $ST);");
 	}
 	
 	private $user_fields_data_override = array();

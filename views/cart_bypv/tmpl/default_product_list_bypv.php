@@ -24,12 +24,19 @@ $CART = $this->getCartData_byPV();
 $PRODUCT_LIST = $this->getProductListData_byPV();
 $COUPON_CODE = $this->getCouponCodeData_byPV();
 
+
+
+
+
 ?>
 <div id="bypv_cart_product_list" class="cart_block">
     <div class="wrap_product_cart">
     <?php foreach ($PRODUCT_LIST->PRODUCTS as $PRODUCT_ID => $PRODUCT) { ?>
     
-    <div class="product_cart span12 floatleft" data-bypv-opc-for-vm-product-id="<?php echo $PRODUCT_ID; ?>">
+    <div style="margin: 0 0 10px 0;" class="product_cart span12 floatleft" data-bypv-opc-for-vm-product-id="<?php echo $PRODUCT_ID; ?>">
+
+
+
     	<?php foreach ($PRODUCT_LIST->PRODUCT_COLS as $COL) { ?>
 			
             
@@ -45,18 +52,20 @@ $COUPON_CODE = $this->getCouponCodeData_byPV();
              
              
               
-			<?php if ($COL->ID == 'NAME') { ?> 
+			<?php
+
+
+
+
+
+            if ($COL->ID == 'NAME') { ?>
             <div class="wrap_product_cart_Right span8 floatleft">   
             
                <div class="wwwww"><input type="button" class="bypv_product_remove image_button" title="<?php echo JText::_('COM_VIRTUEMART_CART_DELETE') ?>" value=" " /></div>
            		<div class="text wrap_product_cart_text">		
 					<?php echo $PRODUCT->LINK_NAME_HTML . $PRODUCT->CUSTOM_FIELDS_HTML; ?>
 				</div>
-                
-
-                
-                
-            </div>      
+            </div>
 			<?php } ?>  
                
                          
@@ -130,9 +139,18 @@ $COUPON_CODE = $this->getCouponCodeData_byPV();
 
   
             
-    	<?php } ?>
+    	<?php }
+
+
+
+
+    	?>
+        <input name="virtuemart_product_id" type="hidden" value="<?= $PRODUCT->virtuemart_product_id ?>">
+        <meta itemprop="price" content="<?= $PRODUCT->cleanSalesPrice ?>"/>
         </div>
+
         <div class="clear"></div>
+
     <?php } ?>
     </div>
 

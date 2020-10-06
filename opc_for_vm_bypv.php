@@ -13,6 +13,7 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 	
 	/**
 	 * @var JRegistry
+     * @since 3.9
 	 */
 	private static $plugin_params = NULL;
 	
@@ -153,27 +154,8 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 		
 		$VirtueMartControllerOrder_done = new VirtueMartControllerOrder_done();
 		$VirtueMartControllerOrder_done->display();
-		
-		 return ;
-	
-	 
-	/*
-	
-		$option = $app->input->get( 'option', false, 'WORD' );
-		$view   = $app->input->get( 'view', false, 'WORD' );
-		$task   = $app->input->get( 'task', false, 'WORD' );
-		
-		
-		
-		*/
-		
-		
-		
-		
-		
-		
-		
 	}#END FN
+
 	/**
 	 * @throws Exception
 	 * @author    Gartes
@@ -214,16 +196,20 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 					
 					if ( $app->input->get( 'task', false, 'WORD' ) != 'addJS' )
 					{
-						if ( $this->initDemoModule_byPV() && modDemoOPCforVMbyPVHelper::onRequest() )
+						/*if ( $this->initDemoModule_byPV() && modDemoOPCforVMbyPVHelper::onRequest() )
 						{
-							$this->redirectToCart_byPV();
-						}#END IF
-						
+						    $this->redirectToCart_byPV();
+						}#END IF*/
+
+
+
 						// We set manually ItemId for correct function of JModuleHelper Class 
 						$menus     = $app->getMenu( 'site' );
 						$component = JComponentHelper::getComponent( 'com_virtuemart' );
 						$items     = $menus->getItems( 'component_id', $component->id );
-						
+
+
+
 						foreach ( $items as $item )
 						{
 							if ( isset( $item->query, $item->query[ 'view' ] ) )
@@ -236,11 +222,14 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 								}#END IF
 							}#END IF
 						}#END FOREACH
+
+//                        echo'<pre>';print_r( $app->input );echo'</pre>'.__FILE__.' '.__LINE__;
+//                        die(__FILE__ .' '. __LINE__ );
+
+
+
 					}#END IF
-				
-				 
-				
-				
+
 				// Plugin
 //     			case 'plugin':
 				
@@ -248,10 +237,7 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 				case 'vmplg':
 				case 'pluginresponse':
 				// case 'order_done':
-					
-					
-					
-					
+
 					// Load VmConfig
 					if ( !class_exists( 'VmConfig' ) )
 					{
@@ -311,7 +297,7 @@ class plgSystemOPC_for_VM_byPV extends JPlugin
 						$this->loadLanguage( $extension, JPATH_SITE );
 					}
 					break;
-				
+
 				// View User
 				case 'user':
 					if ( JRequest::getCmd( 'task' ) === 'editaddresscheckout' )
